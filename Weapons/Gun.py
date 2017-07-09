@@ -1,4 +1,4 @@
-import Locations as l
+from .. import Locations as l
 import Category
 from Normal import *
 
@@ -32,7 +32,6 @@ MP5 = Weapon(1, "MP5", [], [FN57, LaserPointer], [Gun], 38)
 SteyrAUG = Weapon(1, "Steyr AUG", [], [IngramMAC10, LaserPointer], [Gun], 38)
 AK47 = Weapon(1, "AK-47", [], [LongRifle, ScrapMetal], [Gun], 38)
 M16A1 = Weapon(1, "M16A1", [], [WalterPPK, LaserPointer], [Gun], 38)
-HolyWater = HFood(1, "Holy Water", [l.Chapel], [HolyGrail, Water], 101)
 ColtAnaconda = Weapon(1, "Colt Anaconda", [], [ColtPython, HolyWater], [Gun], 42)
 ElectronBlaster = Weapon(1, "Electron Blaster", [], [CRT, IonBattery], [Gun], 42)
 Railgun = Weapon(1, "Railgun", [], [ElectronicParts, SteyrAUG], [Gun], 42)

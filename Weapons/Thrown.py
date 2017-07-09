@@ -40,6 +40,7 @@ TV = Weapon(1, "TV", [l.Alley, l.Slum, l.Uptown, l.TownHall], [], [Thrown], 40)
 
 #Weapons
 CDPlayer = Weapon(1, "CD Player", [], [ElectronicParts, GlassMarble], [Thrown], 5)
+DeadBattery = Weapon(1, "Dead Battery", [], [Water, Battery], [Thrown], 14)
 GlueLump = Weapon(10, "Glue Lump", [], [Glue, BoilingWater], [Thrown], 20)
 PaperBall = Weapon(40, "Paper Ball", [], [ThickPaper, Glue], [Thrown], 20)
 Flubber = Weapon(19, "Flubber", [], [Rubber, BoilingWater], [Thrown], 20)
