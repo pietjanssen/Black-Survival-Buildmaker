@@ -1,5 +1,5 @@
-import Black-Survival-Buildmaker.Locations as l
-import Category
+import BlackSurvivalBuildmaker.Locations as l
+import BlackSurvivalBuildmaker.Category
 from Normal import *
 
 class Weapon:
