@@ -1,4 +1,4 @@
-import Locations as l
+import Black-Survival-Buildmaker.Locations as l
 import Category
 from Normal import *
 
