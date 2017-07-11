@@ -1,29 +1,48 @@
 import Locations as l
 
-class Ingredient:
+class Item:
+    def returnUniqueLocations(self):
+        if(self.location):
+            return self.returnLocationName()
+        elif(self.ingredients):
+            newList = []
+            for ingredient in self.ingredients:
+                #newList.append([ingredient.name] + ingredient.returnUniqueLocations())
+                newList = newList + ingredient.returnUniqueLocations()
+        return newList
+
+    def returnLocationName(self):
+        newList = []
+        for item in self.location:
+             newList.append(item.name)
+        #newList.append(self.name)
+        return newList
+
+    def returnIngredients(self):
+        newList = []
+        if(self.ingredients):
+            newList = []
+            for ingredient in self.ingredients:
+                newList = newList + ingredient.returnIngredients()
+        else:
+            return [self]
+        return newList
+
+class Ingredient(Item):
     def __init__(self, quantity,name, location, ingredients):
         self.quantity = quantity
         self.name = name
         self.ingredients = ingredients
         self.location = location
 
-    def returnLocation(self):
-        newList = []
-        for ingredient in self.ingredients:
-            if ingredient.returnLocation():
-                newList.append(ingredient.returnLocation())
-            elif ingredient.:
-                
-
-
-class Enhance:
+class Enhance(Item):
     def __init__(self, quantity, name, location, ingredients):
         self.quantity = quantity
         self.name = name
         self.ingredients = ingredients
         self.location = location
 
-class HFood:
+class HFood(Item):
     def __init__(self, quantity, name, location, ingredients, health):
         self.quantity = quantity
         self.name = name
@@ -31,7 +50,7 @@ class HFood:
         self.ingredients = ingredients
         self.health = health
 
-class SFood:
+class SFood(Item):
     def __init__(self, quantity, name, location, ingredients, stamina):
         self.quantity = quantity
         self.name = name
@@ -39,14 +58,14 @@ class SFood:
         self.ingredients = ingredients
         self.stamina = stamina
 
-class Special:
+class Special(Item):
     def __init__(self, quantity, name, location, ingredients):
         self.quantity = quantity
         self.name = name
         self.ingredients = ingredients
         self.location = location
 
-class Weapon:
+class Weapon(Item):
     def __init__(self, quantity, name, location, ingredients, category, damage):
         self.quantity = quantity
         self.name = name
@@ -55,7 +74,7 @@ class Weapon:
         self.category = category
         self.damage = damage
 
-class Armor:
+class Armor(Item):
     def __init__(self, quantity, name, location, ingredients, category, armor):
         self.quantity = quantity
         self.name = name
@@ -99,7 +118,7 @@ Bullet = Ingredient(20, "Bullet", [l.Lighthouse, l.Dock, l.Beach, l.Well, l.Rand
 Arrow = Ingredient(20, "Arrow", [l.TownHall, l.ArcheryRange, l.Cemetary, l.Well, l.Random], [])
 ScrapMetal = Ingredient(1, "Scrap Metal", [l.Factory, l.Chapel, l.Slum, l.Beach, l.Alley], [])
 Lighter = Ingredient(3, "Lighter", [l.Slum, l.Lighthouse, l.School], [])
-ThickPaper = Ingredient(1, "ThinkPaper", [l.Temple, l.ArcheryRange, l.TownHall], [])
+ThickPaper = Ingredient(1, "Thick Paper", [l.Temple, l.ArcheryRange, l.TownHall], [])
 LaserPointer = Ingredient(1, "Laser pointer", [l.Factory, l.School], [])
 Mithril = Ingredient(1, "Mithril", [l.Random], [])
 TurtleShell = Ingredient(1, "Turtle Shell", [l.Pond, l.Beach, l.Well, l.Dock], [])
@@ -661,7 +680,6 @@ DAxeOfHeadman = Weapon(1, "D-Axe of Headsman", [], [Tomahawk, Motor], [Thrown], 
 VenomDart = Weapon(4, "Venom Dart", [], [Needle, Poison], [Thrown], 56)
 Sudarsana = Weapon(40, "Sudarsana", [], [NanorizedArms, CD], [Thrown], 75)
 FrostVenomDart = Weapon(1, "Frost Venom Dart", [], [VenomDart, GlacialIce], [Thrown], 100)
-PetalTorrent = Weapon(1, "Petal Torrent", [], [FrostVenomDart, ], [Thrown], 200)
 #Trap
 BambooTrap = Weapon(2, "Bamboo Trap", [], [Snare, Bamboo], [Trap], 20)
 ElectricShockTrap = Weapon(2, "ElectricShockTrap", [], [DeadBattery], [Trap], 25)
@@ -680,6 +698,7 @@ SmallClaymore = Weapon(1, "Small Claymore", [], [GlassPieces, Mine], [Trap], 70)
 MithrilString = Weapon(1, "Mithril String", [], [Mithril, Wire], [Trap], 70)
 ImperialSilkGlove = Weapon(1, "Imperial Silk Glove", [], [SapGlove, MithrilString], [Hand], 46)
 Stingburst = Weapon(1, "Stingburst", [], [SpikedPlank, RDX], [Trap], 80)
+PetalTorrent = Weapon(1, "Petal Torrent", [], [FrostVenomDart, Stingburst], [Thrown], 200)
 FireTrap = Weapon(1, "Fire Trap", [], [Oilcloth, ExplosiveTrap], [Trap], 110)
 C4 = Weapon(2, "C4", [], [RDX, WhitePowder], [Trap], 70)
 HiddenMaiden = Weapon(2, "Hidden Maiden", [], [Stingburst, PopupPirate], [Trap], 80)
